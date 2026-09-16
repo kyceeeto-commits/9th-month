@@ -1,0 +1,1339 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9 Months ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #f8eee9;
+    color: #493a38;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+audio {
+    display: none;
+}
+
+/* =========================
+   SLIDES
+========================= */
+
+.slide {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.02);
+    transition:
+        opacity 0.9s ease,
+        transform 1s ease,
+        visibility 0.9s;
+    overflow: hidden;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart {
+    position: absolute;
+    color: rgba(177, 111, 104, 0.3);
+    font-size: 18px;
+    pointer-events: none;
+    animation: floatHeart linear forwards;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(30px) scale(0.7);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.25) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   SLIDE 1 — LETTER
+========================= */
+
+#slide1 {
+    background:
+        radial-gradient(circle at center, #fffaf7 0%, #f8eee9 65%, #f2e1dc 100%);
+    flex-direction: column;
+}
+
+.intro-text {
+    position: absolute;
+    top: 12%;
+    text-align: center;
+    color: #876b66;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    letter-spacing: 1px;
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 280px;
+    height: 210px;
+    cursor: pointer;
+    perspective: 1000px;
+    margin-top: 30px;
+}
+
+.envelope {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    bottom: 0;
+    background: #ead0c7;
+    border-radius: 8px;
+    box-shadow: 0 20px 45px rgba(112, 75, 68, 0.18);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #dfbbb0;
+    clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+    border-radius: 8px;
+}
+
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 125px;
+    top: 0;
+    left: 0;
+    background: #efd9d1;
+    clip-path: polygon(0 0, 100% 0, 50% 75%);
+    transform-origin: top;
+    transition: transform 1s cubic-bezier(.65, .05, .36, 1);
+    z-index: 5;
+}
+
+.seal {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #ad7068;
+    color: #fff7f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    z-index: 10;
+    left: 50%;
+    top: 92px;
+    transform: translateX(-50%);
+    box-shadow: 0 6px 15px rgba(100, 55, 50, 0.2);
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+.letter-paper {
+    position: absolute;
+    width: 88%;
+    height: 145px;
+    background: #fffaf5;
+    left: 6%;
+    bottom: 10px;
+    border-radius: 4px;
+    z-index: 2;
+    transition: transform 1.2s ease;
+    box-shadow: 0 4px 12px rgba(100, 70, 60, .08);
+}
+
+.envelope-wrapper.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope-wrapper.open .seal {
+    opacity: 0;
+    transform: translateX(-50%) scale(.6);
+}
+
+.envelope-wrapper.open .letter-paper {
+    transform: translateY(-95px);
+}
+
+.click-hint {
+    position: absolute;
+    bottom: -65px;
+    width: 100%;
+    text-align: center;
+    color: #9a7770;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    animation: gentlePulse 2s infinite;
+}
+
+@keyframes gentlePulse {
+    0%, 100% { opacity: .55; }
+    50% { opacity: 1; }
+}
+
+/* =========================
+   LOVE KYLA REVEAL
+========================= */
+
+.love-kyla {
+    position: absolute;
+    z-index: 30;
+    opacity: 0;
+    transform: translateY(25px);
+    pointer-events: none;
+    text-align: center;
+}
+
+.love-kyla.show {
+    animation: loveReveal 2.2s ease forwards;
+}
+
+.love-small {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: #a27c75;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.love-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(55px, 12vw, 95px);
+    font-style: italic;
+    color: #9e625b;
+}
+
+@keyframes loveReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(.92);
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-55px) scale(1.04);
+    }
+}
+
+/* =========================
+   GIFT SLIDES
+========================= */
+
+.gift-slide {
+    flex-direction: column;
+    background: #f9eee9;
+}
+
+.gift-title {
+    position: absolute;
+    top: 10%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 45px);
+    color: #795d58;
+}
+
+.gifts {
+    position: relative;
+    width: min(80vw, 600px);
+    height: 430px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.flower-bouquet {
+    position: relative;
+    width: 210px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* bouquet wrapper */
+.bouquet {
+    position: relative;
+    width: 180px;
+    height: 240px;
+}
+
+.flower {
+    position: absolute;
+    font-size: 55px;
+    filter: drop-shadow(0 8px 8px rgba(100, 60, 50, .12));
+    animation: flowerFloat 3s ease-in-out infinite;
+}
+
+.flower:nth-child(1) {
+    top: 15px;
+    left: 60px;
+}
+
+.flower:nth-child(2) {
+    top: 55px;
+    left: 10px;
+    font-size: 48px;
+    animation-delay: .3s;
+}
+
+.flower:nth-child(3) {
+    top: 65px;
+    right: 5px;
+    font-size: 48px;
+    animation-delay: .7s;
+}
+
+.flower:nth-child(4) {
+    top: 105px;
+    left: 48px;
+    font-size: 45px;
+    animation-delay: .5s;
+}
+
+.flower:nth-child(5) {
+    top: 115px;
+    right: 25px;
+    font-size: 43px;
+    animation-delay: .9s;
+}
+
+.stems {
+    position: absolute;
+    width: 100px;
+    height: 130px;
+    bottom: 0;
+    left: 40px;
+    background: #718267;
+    clip-path: polygon(48% 0, 53% 0, 70% 100%, 30% 100%);
+    opacity: .7;
+}
+
+.wrapping {
+    position: absolute;
+    bottom: 0;
+    left: 28px;
+    width: 125px;
+    height: 105px;
+    background: #e7c9c0;
+    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+    z-index: 5;
+}
+
+.chocolate {
+    width: 175px;
+    height: 240px;
+    background: #6c4032;
+    border-radius: 10px;
+    transform: rotate(-7deg);
+    box-shadow: 0 22px 30px rgba(75, 45, 35, .2);
+    position: relative;
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.chocolate.hidden {
+    opacity: 0;
+    transform: rotate(-7deg) translateY(30px) scale(.8);
+}
+
+.chocolate::before {
+    content: "♡";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #ead3b9;
+    font-size: 75px;
+    font-family: Georgia, serif;
+}
+
+.chocolate::after {
+    content: "for you";
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    text-align: center;
+    color: #ead3b9;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-style: italic;
+}
+
+/* =========================
+   ALFONSO
+========================= */
+
+.alfonso {
+    width: 135px;
+    height: 270px;
+    position: absolute;
+    right: 5%;
+    bottom: 35px;
+    opacity: 0;
+    transform: translateY(30px) scale(.8) rotate(5deg);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.alfonso.show {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(5deg);
+}
+
+.bottle {
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    width: 85px;
+    height: 210px;
+    background: linear-gradient(90deg, #6d3d23, #a56d40, #62361f);
+    border-radius: 18px 18px 12px 12px;
+    box-shadow: 0 20px 25px rgba(70, 40, 25, .22);
+}
+
+.bottle-neck {
+    position: absolute;
+    width: 35px;
+    height: 65px;
+    background: #8c5735;
+    left: 50%;
+    top: -55px;
+    transform: translateX(-50%);
+    border-radius: 8px 8px 2px 2px;
+}
+
+.bottle-label {
+    position: absolute;
+    width: 72px;
+    height: 70px;
+    left: 6px;
+    top: 65px;
+    background: #ead5a8;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6e4430;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* =========================
+   PHOTO SLIDES
+========================= */
+
+.photo-slide {
+    background:
+        radial-gradient(circle at center, #fffaf8 0%, #f7eae5 100%);
+    padding: 5vh 6vw;
+}
+
+.photo-layout {
+    width: min(1150px, 92vw);
+    height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(30px, 6vw, 90px);
+}
+
+.photo-frame {
+    position: relative;
+    width: min(47vw, 530px);
+    max-height: 75vh;
+    padding: 15px 15px 55px;
+    background: #fffdf9;
+    box-shadow: 0 18px 45px rgba(90, 65, 58, .18);
+    transform: rotate(-1.5deg);
+    flex-shrink: 0;
+}
+
+.photo-frame:nth-child(even) {
+    transform: rotate(1.5deg);
+}
+
+.photo-frame img {
+    display: block;
+    width: 100%;
+    max-height: 63vh;
+    object-fit: contain;
+}
+
+.tape {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 90px;
+    height: 28px;
+    background: rgba(215, 183, 169, .55);
+}
+
+.photo-number {
+    position: absolute;
+    bottom: 14px;
+    left: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: #a88b84;
+}
+
+.message-area {
+    width: min(38vw, 460px);
+}
+
+.message-number {
+    font-family: 'Cormorant Garamond', serif;
+    color: #ad8178;
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(19px, 2.1vw, 27px);
+    line-height: 1.5;
+    color: #564542;
+    white-space: pre-line;
+}
+
+.message-heart {
+    margin-top: 25px;
+    color: #b4776e;
+    font-size: 22px;
+}
+
+/* =========================
+   FINAL PAGE
+========================= */
+
+#final {
+    background:
+        radial-gradient(circle at center, #fffaf7 0%, #f5e5df 100%);
+    text-align: center;
+    padding: 30px;
+}
+
+.final-content {
+    max-width: 720px;
+}
+
+.final-content p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 34px);
+    line-height: 1.65;
+    color: #574642;
+    white-space: pre-line;
+}
+
+.final-heart {
+    margin-top: 35px;
+    font-size: 35px;
+    color: #a96760;
+    animation: heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.18); }
+    30% { transform: scale(1); }
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s ease;
+}
+
+.nav.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav button {
+    border: none;
+    background: rgba(255, 250, 247, .75);
+    color: #8c6962;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 5px 15px rgba(80, 50, 45, .1);
+    transition: transform .2s ease, background .2s ease;
+}
+
+.nav button:hover {
+    transform: scale(1.1);
+    background: #fff;
+}
+
+.slide-counter {
+    font-family: 'Cormorant Garamond', serif;
+    color: #98756e;
+    font-size: 18px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .envelope-wrapper {
+        width: 240px;
+        height: 180px;
+    }
+
+    .photo-layout {
+        flex-direction: column;
+        height: auto;
+        gap: 25px;
+        padding-top: 20px;
+    }
+
+    .photo-frame {
+        width: min(82vw, 400px);
+        max-height: 48vh;
+        padding-bottom: 42px;
+    }
+
+    .photo-frame img {
+        max-height: 42vh;
+    }
+
+    .message-area {
+        width: min(88vw, 500px);
+        text-align: center;
+        overflow-y: auto;
+        max-height: 34vh;
+        padding: 0 8px 20px;
+    }
+
+    .message {
+        font-size: 19px;
+        line-height: 1.45;
+    }
+
+    .message-number {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    .gifts {
+        transform: scale(.78);
+    }
+
+    .gift-title {
+        top: 12%;
+        text-align: center;
+    }
+
+    .final-content p {
+        font-size: 22px;
+        line-height: 1.5;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- =========================
+     SLIDE 1 — LETTER
+========================= -->
+
+<section class="slide active" id="slide1">
+
+    <div class="intro-text">
+        a little something for you ♡
+    </div>
+
+    <div class="envelope-wrapper" id="envelope">
+
+        <div class="letter-paper"></div>
+
+        <div class="envelope"></div>
+
+        <div class="flap"></div>
+
+        <div class="seal">
+            K ♡ R
+        </div>
+
+        <div class="click-hint">
+            open me ♡
+        </div>
+
+    </div>
+
+    <div class="love-kyla" id="loveKyla">
+        <span class="love-small">with all my love,</span>
+        <span class="love-name">love, kyla</span>
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SLIDE 2 — CHOCOLATE
+========================= -->
+
+<section class="slide gift-slide" id="slide2">
+
+    <div class="gift-title">
+        a little something for you ♡
+    </div>
+
+    <div class="gifts">
+
+        <div class="chocolate" id="chocolate"></div>
+
+        <div class="flower-bouquet">
+            <div class="bouquet">
+                <div class="flower">🌷</div>
+                <div class="flower">🌸</div>
+                <div class="flower">🌷</div>
+                <div class="flower">🌹</div>
+                <div class="flower">🌸</div>
+
+                <div class="stems"></div>
+                <div class="wrapping"></div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SLIDE 3 — ALFONSO
+========================= -->
+
+<section class="slide gift-slide" id="slide3">
+
+    <div class="gift-title">
+        okay... maybe this is more you HAHAHA ♡
+    </div>
+
+    <div class="gifts">
+
+        <div class="flower-bouquet">
+            <div class="bouquet">
+                <div class="flower">🌷</div>
+                <div class="flower">🌸</div>
+                <div class="flower">🌷</div>
+                <div class="flower">🌹</div>
+                <div class="flower">🌸</div>
+
+                <div class="stems"></div>
+                <div class="wrapping"></div>
+            </div>
+        </div>
+
+        <div class="alfonso show">
+            <div class="bottle">
+                <div class="bottle-label">
+                    ALFONSO<br>
+                    LIGHT
+                </div>
+                <div class="bottle-neck"></div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 01
+========================= -->
+
+<section class="slide photo-slide">
+
+    <div class="photo-layout">
+
+        <div class="photo-frame">
+            <div class="tape"></div>
+            <img src="01.jpg" alt="Our first photo">
+            <div class="photo-number">01 / 09</div>
+        </div>
+
+        <div class="message-area">
+
+            <div class="message-number">OUR FIRST DATE ♡</div>
+
+            <div class="message">first photo together, first date din. strangers pa tayo dito, still getting to know the basics, yet u still found a way to hold my hand. i liked it tho. and my first thought during our first date is how much of a cutie u are.</div>
+
+            <div class="message-heart">♡</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 02
+========================= -->
+
+<section class="slide photo-slide">
+
+    <div class="photo-layout">
+
+        <div class="photo-frame">
+            <div class="tape"></div>
+            <img src="02.jpg" alt="Our second photo">
+            <div class="photo-number">02 / 09</div>
+        </div>
+
+        <div class="message-area">
+
+            <div class="message-number">OUR SECOND DATE ♡</div>
+
+            <div class="message">second photo, second date. i found myself smelling your shoulders maya't maya na dito. first time din pinakilala kita kay mama. ang cute cute mo dito, ang pogi pogi pa, mahal na kita agad dito pero natatakot parin ako ng konti.</div>
+
+            <div class="message-heart">♡</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 03
+========================= -->
+
+<section class="slide photo-slide">
+
+    <div class="photo-layout">
+
+        <div class="photo-frame">
+            <div class="tape"></div>
+            <img src="03.jpg" alt="Our third photo">
+            <div class="photo-number">03 / 09</div>
+        </div>
+
+        <div class="message-area">
+
+            <div class="message-number">OUR LITTLE SECRET ♡</div>
+
+            <div class="message">third photo, naka ilang dates na tayo before this picture. u always loved making sundo of me and watch how 3pp workers gag when they see u hahaha. this was the first time u brought me to ur house. i was so scared pero wala pa pala sina tita at tito kaya okay lang. first bembang din WHAHAHHAHAHAHH.</div>
+
+            <div class="message-heart">♡</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 04
+========================= -->
+
+<section class="slide photo-slide">
+
+    <div class="photo-layout">
+
+        <div class="photo-frame">
+            <div class="tape"></div>
+            <img src="04.jpg" alt="Our fourth photo">
+            <div class="photo-number">04 / 09</div>
+        </div>
+
+        <div class="message-area">
+
+            <div class="message-number">OUR FIRST CHRISTMAS ♡</div>
+
+            <div class="message">fourth photo, our first christmas together. after this sinagot na kita kahit di ka naman nag tanong hahahhaha sorry na dali kapa palanglang hahahha. masayang- masaya ako ng time na to. kahit di tayo nakasama sa ilocos trip ng family mo, masaya parin tayo kase magkasama tayo.</div>
+
+            <div class="message-heart">♡</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 05
+========================= -->
+
+<section class="slide photo-slide">
+
+    <div class="photo-layout">
+
+        <div class="photo-frame">
+            <div class="tape"></div>
+            <img src="05.jpg" alt="Our fifth photo">
+            <div class="photo-number">05 / 09</div>
+        </div>
+
+        <div class="message-area">
+
+            <div class="message-number">OUR FIRST BASKETBALL DATE ♡</div>
+
+            <div class="message">fifth photo, our first "manood ng basketball in person". first time ko din ma experience to and ang best part is ikaw ang kasama ko.</div>
+
+            <div class="message-heart">♡</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 06
+========================= -->
+
+<section class="slide photo-slide">
+
+    <div class="photo-layout">
+
+        <div class="photo-frame">
+            <div class="tape"></div>
+            <img src="06.jpg" alt="Our sixth photo">
+            <div class="photo-number">06 / 09</div>
+        </div>
+
+        <div class="message-area">
+
+            <div class="message-number">ONE OF MY FAVORITES ♡</div>
+
+            <div class="message">sixth photo, one of my favorites. after to kunin nag-away pa tayo, eh kase wala tayo maayos picture together. gusto ko palagi may pic tayo bebe -\_-. during this night after away, narealize ko na kahit minsan sobrang maldita ako sayo at sobra akong tinotoyo, pinipilit mo parin akong intindihin. salamat baby kase kahit ako minsan di maintindihan sarili ko and it takes a man who genuinely loves to understand somebody like me.</div>
+
+            <div class="message-heart">♡</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 07
+========================= -->
+
+<section class="slide photo-slide">
+
+    <div class="photo-layout">
+
+        <div class="photo-frame">
+            <div class="tape"></div>
+            <img src="07.jpg" alt="Our seventh photo">
+            <div class="photo-number">07 / 09</div>
+        </div>
+
+        <div class="message-area">
+
+            <div class="message-number">MY TOUR GUIDE ♡</div>
+
+            <div class="message">seventh photo, i loveee. first punta natin together sa national museum, pagod pero worth it. first time ko din makasakay ng train hahahhahh shet thank u baby so much. like ng sinabi mo nung dati, "i can be ur tourguide", and yes u brought me to the places i have never been.</div>
+
+            <div class="message-heart">♡</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 08
+========================= -->
+
+<section class="slide photo-slide">
+
+    <div class="photo-layout">
+
+        <div class="photo-frame">
+            <div class="tape"></div>
+            <img src="08.jpg" alt="Our eighth photo">
+            <div class="photo-number">08 / 09</div>
+        </div>
+
+        <div class="message-area">
+
+            <div class="message-number">OUR FIRST HIKE ♡</div>
+
+            <div class="message">eigth photo, first hiking experience together. kapoyyyyyy so much pero enjoy din hahahha. i can't wait to climb bigger and taller mountains with u my palanglang. wala akong gustong ibang kasama kundi ikaw lang.</div>
+
+            <div class="message-heart">♡</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 09
+========================= -->
+
+<section class="slide photo-slide">
+
+    <div class="photo-layout">
+
+        <div class="photo-frame">
+            <div class="tape"></div>
+            <img src="09.jpg" alt="Our ninth photo">
+            <div class="photo-number">09 / 09</div>
+        </div>
+
+        <div class="message-area">
+
+            <div class="message-number">MY FAVORITE ♡</div>
+
+            <div class="message">finally, ninth photo, pinakarecent and pinakafave ko. thanks for buying us promise rings. thank u for the flower, and thank u for making me feel so loved.</div>
+
+            <div class="message-heart">♡</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL MESSAGE
+========================= -->
+
+<section class="slide" id="final">
+
+    <div class="final-content">
+
+        <p>within those nine months, ikaw lang palanglang.
+ikaw lang sa umaga, sa tanghali, at sa gabi.
+ikaw lang ang palaging pinipili ko, tayo.
+mahal kita, at patuloy na mamahalin pa.
+pinagdarasal ko sa Panginoon na He will bless what's ours.
+i really believe in our relationship, in us.
+
+mahala kita, palagi!</p>
+
+        <div class="final-heart">♡</div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<div class="nav" id="nav">
+
+    <button id="prev">‹</button>
+
+    <span class="slide-counter" id="counter">1 / 12</span>
+
+    <button id="next">›</button>
+
+</div>
+
+
+<script>
+
+/* =========================
+   VARIABLES
+========================= */
+
+const slides = document.querySelectorAll('.slide');
+const envelope = document.getElementById('envelope');
+const loveKyla = document.getElementById('loveKyla');
+const music = document.getElementById('music');
+
+const nav = document.getElementById('nav');
+const nextButton = document.getElementById('next');
+const prevButton = document.getElementById('prev');
+const counter = document.getElementById('counter');
+
+let currentSlide = 0;
+let opened = false;
+
+
+/* =========================
+   CREATE FLOATING HEARTS
+========================= */
+
+function createHeart() {
+
+    const heart = document.createElement('div');
+
+    heart.className = 'heart';
+    heart.innerHTML = Math.random() > .5 ? '♡' : '♥';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.bottom = '-30px';
+    heart.style.fontSize = (12 + Math.random() * 18) + 'px';
+    heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+setInterval(createHeart, 1300);
+
+
+/* =========================
+   SHOW SLIDE
+========================= */
+
+function showSlide(index) {
+
+    if (index < 0) index = 0;
+    if (index >= slides.length) index = slides.length - 1;
+
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+
+    currentSlide = index;
+
+    counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+
+    /* Hide navigation on the opening slide */
+    if (currentSlide === 0) {
+        nav.classList.remove('visible');
+    } else {
+        nav.classList.add('visible');
+    }
+}
+
+
+/* =========================
+   OPEN LETTER
+========================= */
+
+envelope.addEventListener('click', () => {
+
+    if (opened) return;
+
+    opened = true;
+
+    envelope.classList.add('open');
+
+    /*
+        MUSIC STARTS IMMEDIATELY
+        AFTER THE USER CLICKS THE LETTER.
+    */
+
+    music.volume = 0.65;
+
+    music.play().catch(() => {
+        console.log("Music could not autoplay.");
+    });
+
+    setTimeout(() => {
+
+        loveKyla.classList.add('show');
+
+    }, 700);
+
+    setTimeout(() => {
+
+        showSlide(1);
+
+    }, 3200);
+
+});
+
+
+/* =========================
+   NEXT
+========================= */
+
+nextButton.addEventListener('click', () => {
+
+    if (currentSlide < slides.length - 1) {
+        showSlide(currentSlide + 1);
+    }
+
+});
+
+
+/* =========================
+   PREVIOUS
+========================= */
+
+prevButton.addEventListener('click', () => {
+
+    if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+    }
+
+});
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener('keydown', (event) => {
+
+    if (!opened) return;
+
+    if (event.key === 'ArrowRight' || event.key === ' ') {
+
+        event.preventDefault();
+
+        if (currentSlide < slides.length - 1) {
+            showSlide(currentSlide + 1);
+        }
+
+    }
+
+    if (event.key === 'ArrowLeft') {
+
+        if (currentSlide > 1) {
+            showSlide(currentSlide - 1);
+        }
+
+    }
+
+});
+
+
+/* =========================
+   TOUCH SWIPE
+========================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', (event) => {
+
+    touchStartX = event.changedTouches[0].screenX;
+
+});
+
+document.addEventListener('touchend', (event) => {
+
+    touchEndX = event.changedTouches[0].screenX;
+
+    const difference = touchStartX - touchEndX;
+
+    if (Math.abs(difference) < 50) return;
+
+    if (difference > 0) {
+
+        if (currentSlide < slides.length - 1) {
+            showSlide(currentSlide + 1);
+        }
+
+    } else {
+
+        if (currentSlide > 1) {
+            showSlide(currentSlide - 1);
+        }
+
+    }
+
+});
+
+
+/* =========================
+   INITIAL STATE
+========================= */
+
+showSlide(0);
+
+</script>
+
+</body>
+</html>
+```
