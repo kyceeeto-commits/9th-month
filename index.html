@@ -1,13 +1,17 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>9 Months ♡</title>
+
+<title>9 lovely months with u ♡</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500&family=Great+Vibes&display=swap');
+
+/* =====================================================
+   GLOBAL
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -15,694 +19,1688 @@
     padding: 0;
 }
 
-html, body {
+html,
+body {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
 }
 
 body {
-    background: #f8eee9;
-    color: #493a38;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(255,255,255,.98),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(247,210,224,.5),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,.45),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #fffafd,
+            #f9edf2 48%,
+            #f5e4eb
+        );
+
+    color: #654c58;
     font-family: 'DM Sans', sans-serif;
 }
 
-/* =========================
-   MUSIC
-========================= */
+/* =====================================================
+   FLOATING BACKGROUND
+===================================================== */
 
-audio {
-    display: none;
-}
-
-/* =========================
-   SLIDES
-========================= */
-
-.slide {
+#background {
     position: fixed;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.02);
-    transition:
-        opacity 0.9s ease,
-        transform 1s ease,
-        visibility 0.9s;
     overflow: hidden;
-}
-
-.slide.active {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-}
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
-.heart {
-    position: absolute;
-    color: rgba(177, 111, 104, 0.3);
-    font-size: 18px;
     pointer-events: none;
-    animation: floatHeart linear forwards;
+    z-index: 0;
+}
+
+.bg-heart {
+    position: absolute;
+    color: #d58da5;
+    opacity: .17;
+
+    animation:
+        floatHeart linear infinite;
 }
 
 @keyframes floatHeart {
-    0% {
-        transform: translateY(30px) scale(0.7);
-        opacity: 0;
+
+    from {
+        transform:
+            translateY(110vh)
+            rotate(0deg);
     }
 
-    15% {
+    to {
+        transform:
+            translateY(-15vh)
+            rotate(360deg);
+    }
+}
+
+/* =====================================================
+   SCREEN SYSTEM
+===================================================== */
+
+.screen {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px 15px;
+
+    overflow-y: auto;
+
+    z-index: 2;
+}
+
+.screen.active {
+    display: flex;
+
+    animation:
+        pageIn .8s ease forwards;
+}
+
+@keyframes pageIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.985);
+    }
+
+    to {
         opacity: 1;
-    }
-
-    100% {
-        transform: translateY(-110vh) scale(1.25) rotate(15deg);
-        opacity: 0;
+        transform: scale(1);
     }
 }
 
-/* =========================
-   SLIDE 1 — LETTER
-========================= */
+/* =====================================================
+   OPENING PAGE
+===================================================== */
 
-#slide1 {
-    background:
-        radial-gradient(circle at center, #fffaf7 0%, #f8eee9 65%, #f2e1dc 100%);
+.intro-container {
+    width: min(100%, 950px);
+    min-height: 100vh;
+
+    display: flex;
     flex-direction: column;
-}
+    align-items: center;
+    justify-content: center;
 
-.intro-text {
-    position: absolute;
-    top: 12%;
     text-align: center;
-    color: #876b66;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 4vw, 34px);
-    letter-spacing: 1px;
+
+    position: relative;
+
+    padding-top: 20px;
 }
 
-.envelope-wrapper {
+.intro-small {
+    font-family: 'Allura', cursive;
+
+    font-size: clamp(27px, 4vw, 38px);
+
+    letter-spacing: 2px;
+
+    color: #a66d81;
+
+    margin-bottom: -2px;
+
+    text-shadow:
+        0 2px 0 white,
+        0 0 14px rgba(207,140,162,.28);
+}
+
+/* =====================================================
+   MAIN TITLE
+===================================================== */
+
+.main-title {
     position: relative;
-    width: 280px;
-    height: 210px;
-    cursor: pointer;
-    perspective: 1000px;
-    margin-top: 30px;
+
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(58px, 11vw, 105px);
+
+    font-weight: 400;
+
+    line-height: .95;
+
+    color: #83546a;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 2px 0 rgba(255,255,255,.98),
+        0 5px 16px rgba(126,75,96,.15),
+        0 0 25px rgba(255,255,255,.95);
+
+    filter:
+        drop-shadow(
+            0 8px 15px rgba(126,75,96,.08)
+        );
+
+    animation:
+        titleGlow 3s ease-in-out infinite;
+}
+
+.main-title span {
+    color: #a65f79;
+
+    text-shadow:
+        0 2px 0 white,
+        0 0 18px rgba(225,159,180,.4);
+}
+
+.main-title::before {
+    content: "✦";
+
+    position: absolute;
+
+    left: -50px;
+    top: 8px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 25px;
+
+    color: #d49aae;
+
+    animation:
+        sparkle 2s ease-in-out infinite;
+}
+
+.main-title::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: -50px;
+    bottom: 5px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 25px;
+
+    color: #d49aae;
+
+    animation:
+        sparkle 2s ease-in-out infinite .8s;
+}
+
+@keyframes titleGlow {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(
+                0 8px 15px rgba(126,75,96,.08)
+            );
+    }
+
+    50% {
+        filter:
+            drop-shadow(
+                0 8px 22px rgba(126,75,96,.18)
+            )
+            brightness(1.04);
+    }
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: .35;
+        transform:
+            scale(.8)
+            rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform:
+            scale(1.25)
+            rotate(15deg);
+    }
+}
+
+.subtitle {
+    margin-top: 13px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 16px;
+
+    letter-spacing: 3px;
+
+    color: #a47b89;
+}
+
+/* =====================================================
+   BOUQUET
+===================================================== */
+
+.bouquet-scene {
+    position: relative;
+
+    width: min(96vw, 700px);
+    height: 430px;
+
+    margin-top: -8px;
+    margin-bottom: -55px;
+
+    perspective: 1200px;
+}
+
+.bouquet {
+    position: absolute;
+    inset: 0;
+
+    transform-style: preserve-3d;
+
+    animation:
+        bouquetFloat 5s ease-in-out infinite;
+}
+
+@keyframes bouquetFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotateY(-1deg);
+    }
+
+    50% {
+        transform:
+            translateY(-8px)
+            rotateY(1deg);
+    }
+}
+
+/* =====================================================
+   STEMS
+===================================================== */
+
+.stem {
+    position: absolute;
+
+    bottom: 72px;
+    left: 50%;
+
+    width: 6px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #405f48,
+            #78956e,
+            #496b50
+        );
+
+    transform-origin: bottom;
+
+    z-index: 1;
+}
+
+.stem.s1 {
+    height: 285px;
+    transform:
+        translateX(-50%)
+        rotate(-18deg);
+}
+
+.stem.s2 {
+    height: 300px;
+    transform:
+        translateX(-50%)
+        rotate(-10deg);
+}
+
+.stem.s3 {
+    height: 320px;
+    transform:
+        translateX(-50%)
+        rotate(0deg);
+}
+
+.stem.s4 {
+    height: 295px;
+    transform:
+        translateX(-50%)
+        rotate(10deg);
+}
+
+.stem.s5 {
+    height: 275px;
+    transform:
+        translateX(-50%)
+        rotate(18deg);
+}
+
+.stem.s6 {
+    height: 245px;
+    transform:
+        translateX(-50%)
+        rotate(-30deg);
+}
+
+/* =====================================================
+   LEAVES
+===================================================== */
+
+.leaf {
+    position: absolute;
+
+    width: 95px;
+    height: 42px;
+
+    border-radius:
+        100%
+        0
+        100%
+        0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a5bd9d,
+            #66835d 58%,
+            #486447
+        );
+
+    box-shadow:
+        inset 5px 5px 8px rgba(255,255,255,.25),
+        0 5px 8px rgba(60,85,55,.12);
+
+    z-index: 5;
+}
+
+.leaf::after {
+    content: "";
+
+    position: absolute;
+
+    width: 70%;
+    height: 2px;
+
+    background: rgba(255,255,255,.28);
+
+    left: 10%;
+    top: 50%;
+
+    transform: rotate(-17deg);
+}
+
+.leaf.l1 {
+    left: 23%;
+    bottom: 135px;
+    transform: rotate(30deg);
+}
+
+.leaf.l2 {
+    left: 34%;
+    bottom: 105px;
+    transform:
+        rotate(-18deg)
+        scaleX(-1);
+}
+
+.leaf.l3 {
+    left: 49%;
+    bottom: 122px;
+    transform: rotate(22deg);
+}
+
+.leaf.l4 {
+    left: 57%;
+    bottom: 155px;
+    transform:
+        rotate(-27deg)
+        scaleX(-1);
+}
+
+.leaf.l5 {
+    left: 42%;
+    bottom: 195px;
+    transform: rotate(18deg);
+}
+
+/* =====================================================
+   ROSES
+===================================================== */
+
+.rose {
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    transform-style: preserve-3d;
+
+    z-index: 20;
+
+    filter:
+        drop-shadow(
+            0 15px 15px rgba(89,53,68,.15)
+        );
+}
+
+.rose.r1 {
+    left: 14%;
+    top: 29%;
+    transform:
+        scale(.88)
+        rotate(-8deg);
+}
+
+.rose.r2 {
+    left: 31%;
+    top: 5%;
+    transform: scale(1.08);
+}
+
+.rose.r3 {
+    left: 53%;
+    top: 9%;
+    transform:
+        scale(.96)
+        rotate(7deg);
+}
+
+.rose.r4 {
+    left: 68%;
+    top: 30%;
+    transform:
+        scale(.78)
+        rotate(11deg);
+}
+
+.rose.r5 {
+    left: 39%;
+    top: 31%;
+    transform:
+        scale(.8)
+        rotate(-4deg);
+}
+
+.rose-petal {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 72px;
+    height: 84px;
+
+    margin-left: -36px;
+    margin-top: -42px;
+
+    border-radius:
+        55%
+        55%
+        48%
+        48% /
+        65%
+        65%
+        42%
+        42%;
+
+    transform-origin: 50% 85%;
+
+    box-shadow:
+        inset -8px -8px 14px rgba(115,45,69,.12),
+        inset 8px 7px 13px rgba(255,255,255,.38),
+        0 3px 7px rgba(90,45,65,.09);
+}
+
+.rose-petal:nth-child(1) {
+    transform:
+        rotate(0deg)
+        translateY(-29px)
+        scale(.95);
+}
+
+.rose-petal:nth-child(2) {
+    transform:
+        rotate(45deg)
+        translateY(-28px);
+}
+
+.rose-petal:nth-child(3) {
+    transform:
+        rotate(90deg)
+        translateY(-29px);
+}
+
+.rose-petal:nth-child(4) {
+    transform:
+        rotate(135deg)
+        translateY(-28px);
+}
+
+.rose-petal:nth-child(5) {
+    transform:
+        rotate(180deg)
+        translateY(-29px);
+}
+
+.rose-petal:nth-child(6) {
+    transform:
+        rotate(225deg)
+        translateY(-28px);
+}
+
+.rose-petal:nth-child(7) {
+    transform:
+        rotate(270deg)
+        translateY(-29px);
+}
+
+.rose-petal:nth-child(8) {
+    transform:
+        rotate(315deg)
+        translateY(-28px);
+}
+
+/* rose colors */
+
+.pink .rose-petal {
+    background:
+        radial-gradient(
+            circle at 35% 20%,
+            rgba(255,255,255,.55),
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #ffd2df,
+            #e98da9 58%,
+            #c96888
+        );
+}
+
+.blush .rose-petal {
+    background:
+        radial-gradient(
+            circle at 35% 20%,
+            rgba(255,255,255,.6),
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #ffe1e8,
+            #efa9bc 60%,
+            #d9829e
+        );
+}
+
+.cream .rose-petal {
+    background:
+        radial-gradient(
+            circle at 35% 20%,
+            #ffffff,
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #fffefa,
+            #f3e4e5 65%,
+            #dcc5cc
+        );
+}
+
+.peach .rose-petal {
+    background:
+        radial-gradient(
+            circle at 35% 20%,
+            rgba(255,255,255,.6),
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #ffe0cf,
+            #efa98e 60%,
+            #d97f70
+        );
+}
+
+.lilac .rose-petal {
+    background:
+        radial-gradient(
+            circle at 35% 20%,
+            rgba(255,255,255,.55),
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #f0def5,
+            #c6a4d4 60%,
+            #9f78b3
+        );
+}
+
+.rose-center {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 47px;
+    height: 47px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    z-index: 50;
+
+    background:
+        radial-gradient(
+            circle at 38% 32%,
+            #fff3b5 0 7%,
+            #e9b755 24%,
+            #ca8335 58%,
+            #a9652e 100%
+        );
+
+    box-shadow:
+        inset 2px 3px 6px rgba(255,255,255,.55),
+        0 3px 7px rgba(90,50,40,.12);
+}
+
+/* =====================================================
+   FILLER FLOWERS
+===================================================== */
+
+.filler {
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 5px rgba(255,255,255,.22),
+        0 4px 8px rgba(80,50,60,.1);
+
+    z-index: 15;
+}
+
+.filler::before,
+.filler::after {
+    content: "";
+
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: inherit;
+}
+
+.filler::before {
+    transform: translateX(-8px);
+}
+
+.filler::after {
+    transform: translateX(8px);
+}
+
+.f1 {
+    left: 28%;
+    top: 30%;
+}
+
+.f2 {
+    left: 67%;
+    top: 25%;
+}
+
+.f3 {
+    left: 23%;
+    top: 48%;
+}
+
+.f4 {
+    left: 73%;
+    top: 47%;
+}
+
+.f5 {
+    left: 56%;
+    top: 35%;
+}
+
+/* =====================================================
+   WRAPPING PAPER
+===================================================== */
+
+.wrapper {
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+
+    width: 285px;
+    height: 175px;
+
+    transform:
+        translateX(-50%)
+        perspective(600px)
+        rotateX(-5deg);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2d4de,
+            #d89aad 52%,
+            #bf718d
+        );
+
+    clip-path:
+        polygon(
+            5% 0,
+            95% 0,
+            100% 100%,
+            0 100%
+        );
+
+    z-index: 80;
+
+    box-shadow:
+        0 25px 30px rgba(90,50,65,.16);
+}
+
+.wrapper::before {
+    content: "";
+
+    position: absolute;
+
+    width: 60px;
+    height: 205px;
+
+    left: 105px;
+    top: -18px;
+
+    background: rgba(255,255,255,.2);
+
+    transform: rotate(9deg);
+}
+
+.wrapper::after {
+    content: "";
+
+    position: absolute;
+
+    width: 14px;
+    height: 190px;
+
+    left: 136px;
+    top: -8px;
+
+    background: rgba(255,255,255,.28);
+}
+
+.ribbon {
+    position: absolute;
+
+    width: 72px;
+    height: 38px;
+
+    left: 107px;
+    top: -18px;
+
+    z-index: 90;
+}
+
+.ribbon::before,
+.ribbon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 48px;
+    height: 34px;
+
+    border:
+        7px solid rgba(255,255,255,.78);
+
+    border-radius:
+        75%
+        25%
+        75%
+        25%;
+}
+
+.ribbon::before {
+    left: -27px;
+    transform: rotate(24deg);
+}
+
+.ribbon::after {
+    right: -27px;
+    transform:
+        rotate(-24deg)
+        scaleX(-1);
+}
+
+.ribbon-knot {
+    position: absolute;
+
+    width: 23px;
+    height: 23px;
+
+    left: 24px;
+    top: 7px;
+
+    border-radius: 50%;
+
+    background: #fff3f5;
+
+    z-index: 92;
+}
+
+/* =====================================================
+   ENVELOPE
+===================================================== */
+
+.envelope-area {
+    position: relative;
+
+    z-index: 200;
+
+    margin-top: -70px;
 }
 
 .envelope {
-    position: absolute;
-    width: 100%;
-    height: 150px;
-    bottom: 0;
-    background: #ead0c7;
-    border-radius: 8px;
-    box-shadow: 0 20px 45px rgba(112, 75, 68, 0.18);
+    position: relative;
+
+    width: 270px;
+    height: 175px;
+
+    cursor: pointer;
+
+    transition:
+        transform .35s ease;
+
+    filter:
+        drop-shadow(
+            0 18px 25px rgba(88,50,67,.18)
+        );
 }
 
-.envelope::before {
-    content: "";
+.envelope:hover {
+    transform:
+        translateY(-7px)
+        scale(1.025);
+}
+
+.envelope-back {
     position: absolute;
     inset: 0;
-    background: #dfbbb0;
-    clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
-    border-radius: 8px;
+
+    background: #efd1dc;
+
+    border-radius: 7px;
 }
 
-.flap {
+.envelope-front {
     position: absolute;
-    width: 100%;
-    height: 125px;
-    top: 0;
-    left: 0;
-    background: #efd9d1;
-    clip-path: polygon(0 0, 100% 0, 50% 75%);
-    transform-origin: top;
-    transition: transform 1s cubic-bezier(.65, .05, .36, 1);
+    inset: 0;
+
     z-index: 5;
+
+    background: #e7bdcc;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 57%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    border-radius: 7px;
 }
 
-.seal {
+.envelope-flap {
     position: absolute;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: #ad7068;
-    color: #fff7f3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    z-index: 10;
-    left: 50%;
-    top: 92px;
-    transform: translateX(-50%);
-    box-shadow: 0 6px 15px rgba(100, 55, 50, 0.2);
-    transition: opacity .5s ease, transform .5s ease;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 112px;
+
+    background: #f8e0e7;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 74%
+        );
+
+    transform-origin: top;
+
+    transition:
+        transform .9s cubic-bezier(
+            .68,
+            -.55,
+            .27,
+            1.55
+        );
+
+    z-index: 8;
 }
 
-.letter-paper {
-    position: absolute;
-    width: 88%;
-    height: 145px;
-    background: #fffaf5;
-    left: 6%;
-    bottom: 10px;
-    border-radius: 4px;
-    z-index: 2;
-    transition: transform 1.2s ease;
-    box-shadow: 0 4px 12px rgba(100, 70, 60, .08);
-}
-
-.envelope-wrapper.open .flap {
+.envelope.open .envelope-flap {
     transform: rotateX(180deg);
 }
 
-.envelope-wrapper.open .seal {
-    opacity: 0;
-    transform: translateX(-50%) scale(.6);
-}
-
-.envelope-wrapper.open .letter-paper {
-    transform: translateY(-95px);
-}
-
-.click-hint {
+.letter {
     position: absolute;
-    bottom: -65px;
-    width: 100%;
-    text-align: center;
-    color: #9a7770;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 21px;
-    animation: gentlePulse 2s infinite;
-}
 
-@keyframes gentlePulse {
-    0%, 100% { opacity: .55; }
-    50% { opacity: 1; }
-}
-
-/* =========================
-   LOVE KYLA REVEAL
-========================= */
-
-.love-kyla {
-    position: absolute;
-    z-index: 30;
-    opacity: 0;
-    transform: translateY(25px);
-    pointer-events: none;
-    text-align: center;
-}
-
-.love-kyla.show {
-    animation: loveReveal 2.2s ease forwards;
-}
-
-.love-small {
-    display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    color: #a27c75;
-    letter-spacing: 2px;
-    margin-bottom: 6px;
-}
-
-.love-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(55px, 12vw, 95px);
-    font-style: italic;
-    color: #9e625b;
-}
-
-@keyframes loveReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(30px) scale(.92);
-    }
-
-    30% {
-        opacity: 1;
-    }
-
-    70% {
-        opacity: 1;
-        transform: translateY(-5px) scale(1);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-55px) scale(1.04);
-    }
-}
-
-/* =========================
-   GIFT SLIDES
-========================= */
-
-.gift-slide {
-    flex-direction: column;
-    background: #f9eee9;
-}
-
-.gift-title {
-    position: absolute;
-    top: 10%;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 5vw, 45px);
-    color: #795d58;
-}
-
-.gifts {
-    position: relative;
-    width: min(80vw, 600px);
-    height: 430px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 35px;
-}
-
-.flower-bouquet {
-    position: relative;
-    width: 210px;
-    height: 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* bouquet wrapper */
-.bouquet {
-    position: relative;
-    width: 180px;
-    height: 240px;
-}
-
-.flower {
-    position: absolute;
-    font-size: 55px;
-    filter: drop-shadow(0 8px 8px rgba(100, 60, 50, .12));
-    animation: flowerFloat 3s ease-in-out infinite;
-}
-
-.flower:nth-child(1) {
-    top: 15px;
-    left: 60px;
-}
-
-.flower:nth-child(2) {
-    top: 55px;
-    left: 10px;
-    font-size: 48px;
-    animation-delay: .3s;
-}
-
-.flower:nth-child(3) {
-    top: 65px;
-    right: 5px;
-    font-size: 48px;
-    animation-delay: .7s;
-}
-
-.flower:nth-child(4) {
-    top: 105px;
-    left: 48px;
-    font-size: 45px;
-    animation-delay: .5s;
-}
-
-.flower:nth-child(5) {
-    top: 115px;
-    right: 25px;
-    font-size: 43px;
-    animation-delay: .9s;
-}
-
-.stems {
-    position: absolute;
-    width: 100px;
-    height: 130px;
-    bottom: 0;
-    left: 40px;
-    background: #718267;
-    clip-path: polygon(48% 0, 53% 0, 70% 100%, 30% 100%);
-    opacity: .7;
-}
-
-.wrapping {
-    position: absolute;
-    bottom: 0;
-    left: 28px;
-    width: 125px;
-    height: 105px;
-    background: #e7c9c0;
-    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
-    z-index: 5;
-}
-
-.chocolate {
-    width: 175px;
-    height: 240px;
-    background: #6c4032;
-    border-radius: 10px;
-    transform: rotate(-7deg);
-    box-shadow: 0 22px 30px rgba(75, 45, 35, .2);
-    position: relative;
-    transition:
-        opacity .7s ease,
-        transform .7s ease;
-}
-
-.chocolate.hidden {
-    opacity: 0;
-    transform: rotate(-7deg) translateY(30px) scale(.8);
-}
-
-.chocolate::before {
-    content: "♡";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: #ead3b9;
-    font-size: 75px;
-    font-family: Georgia, serif;
-}
-
-.chocolate::after {
-    content: "for you";
-    position: absolute;
-    bottom: 25px;
-    width: 100%;
-    text-align: center;
-    color: #ead3b9;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 25px;
-    font-style: italic;
-}
-
-/* =========================
-   ALFONSO
-========================= */
-
-.alfonso {
-    width: 135px;
-    height: 270px;
-    position: absolute;
-    right: 5%;
-    bottom: 35px;
-    opacity: 0;
-    transform: translateY(30px) scale(.8) rotate(5deg);
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
-
-.alfonso.show {
-    opacity: 1;
-    transform: translateY(0) scale(1) rotate(5deg);
-}
-
-.bottle {
-    position: absolute;
-    bottom: 0;
     left: 25px;
-    width: 85px;
-    height: 210px;
-    background: linear-gradient(90deg, #6d3d23, #a56d40, #62361f);
-    border-radius: 18px 18px 12px 12px;
-    box-shadow: 0 20px 25px rgba(70, 40, 25, .22);
-}
+    top: 20px;
 
-.bottle-neck {
-    position: absolute;
-    width: 35px;
-    height: 65px;
-    background: #8c5735;
-    left: 50%;
-    top: -55px;
-    transform: translateX(-50%);
-    border-radius: 8px 8px 2px 2px;
-}
+    width: 220px;
+    height: 135px;
 
-.bottle-label {
-    position: absolute;
-    width: 72px;
-    height: 70px;
-    left: 6px;
-    top: 65px;
-    background: #ead5a8;
-    border-radius: 3px;
+    background: #fffdfb;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    color: #6e4430;
+
+    text-align: center;
+
+    padding: 15px;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.08);
+
+    z-index: 2;
+
+    transition:
+        top 1s ease,
+        transform 1s ease;
+}
+
+.envelope.open .letter {
+    top: -100px;
+
+    transform:
+        scale(1.06);
+
+    z-index: 20;
+}
+
+.letter-text {
+    font-family: 'Allura', cursive;
+
+    font-size: 31px;
+
+    color: #7c5364;
+}
+
+.click-text {
+    margin-top: 17px;
+
     font-family: 'Cormorant Garamond', serif;
+
     font-size: 13px;
-    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    color: #9d7180;
+
+    animation:
+        pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: .4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.next-btn {
+    border: none;
+
+    cursor: pointer;
+
+    padding: 12px 29px;
+
+    margin-top: 23px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(255,255,255,.86);
+
+    color: #805669;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 16px;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 8px 22px rgba(80,45,60,.1);
+
+    transition:
+        .3s ease;
+}
+
+.next-btn:hover {
+    transform:
+        translateY(-3px);
+
+    background: white;
+
+    box-shadow:
+        0 12px 27px rgba(80,45,60,.15);
+}
+
+/* =====================================================
+   PERSONALIZED IMAGE PAGE
+===================================================== */
+
+.personalized-page {
+    width: min(95vw, 850px);
+
     text-align: center;
 }
 
-/* =========================
-   PHOTO SLIDES
-========================= */
+.small-label {
+    font-family: 'Allura', cursive;
 
-.photo-slide {
-    background:
-        radial-gradient(circle at center, #fffaf8 0%, #f7eae5 100%);
-    padding: 5vh 6vw;
+    font-size: 31px;
+
+    letter-spacing: 2px;
+
+    color: #a66c80;
+
+    text-shadow:
+        0 2px 0 white,
+        0 0 15px rgba(215,157,177,.3);
 }
 
-.photo-layout {
-    width: min(1150px, 92vw);
-    height: 88vh;
+.page-title {
+    position: relative;
+
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(48px, 8vw, 75px);
+
+    font-weight: 400;
+
+    color: #805266;
+
+    margin-bottom: 19px;
+
+    text-shadow:
+        0 2px 0 white,
+        0 5px 18px rgba(120,70,90,.13);
+}
+
+.page-title::after {
+    content: "♡  ✦  ♡";
+
+    display: block;
+
+    margin-top: 3px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 17px;
+
+    letter-spacing: 7px;
+
+    color: #c5899d;
+}
+
+.personalized-frame {
+    display: inline-block;
+
+    position: relative;
+
+    padding:
+        12px
+        12px
+        57px;
+
+    background: #fffdfb;
+
+    box-shadow:
+        0 25px 60px rgba(80,45,60,.17),
+        0 4px 15px rgba(80,45,60,.08);
+
+    transform: rotate(-1deg);
+}
+
+.personalized-frame::before {
+    content: "♡";
+
+    position: absolute;
+
+    top: 12px;
+    left: 17px;
+
+    color: #c57b94;
+
+    font-size: 21px;
+}
+
+.personalized-frame::after {
+    content: "♡";
+
+    position: absolute;
+
+    bottom: 13px;
+    right: 18px;
+
+    color: #c57b94;
+
+    font-size: 21px;
+}
+
+.personalized-frame img {
+    display: block;
+
+    width: min(88vw, 650px);
+
+    max-height: 67vh;
+
+    object-fit: contain;
+}
+
+.personalized-caption {
+    position: absolute;
+
+    bottom: 16px;
+
+    width: 100%;
+    left: 0;
+
+    font-family: 'Allura', cursive;
+
+    font-size: 27px;
+
+    color: #7c5664;
+}
+
+/* =====================================================
+   PHOTO PAGES
+===================================================== */
+
+.photo-page {
+    width: min(95vw, 850px);
+
     display: flex;
+
+    flex-direction: column;
+
     align-items: center;
-    justify-content: center;
-    gap: clamp(30px, 6vw, 90px);
+
+    text-align: center;
+}
+
+.photo-number {
+    font-family: 'Allura', cursive;
+
+    font-size: 30px;
+
+    color: #a66c80;
+
+    margin-bottom: 9px;
+
+    text-shadow:
+        0 2px 0 white,
+        0 0 12px rgba(215,157,177,.25);
+}
+
+.photo-number::before {
+    content: "♡ ";
+}
+
+.photo-number::after {
+    content: " ♡";
 }
 
 .photo-frame {
     position: relative;
-    width: min(47vw, 530px);
-    max-height: 75vh;
-    padding: 15px 15px 55px;
-    background: #fffdf9;
-    box-shadow: 0 18px 45px rgba(90, 65, 58, .18);
-    transform: rotate(-1.5deg);
-    flex-shrink: 0;
-}
 
-.photo-frame:nth-child(even) {
-    transform: rotate(1.5deg);
+    width: min(92vw, 650px);
+
+    padding:
+        13px
+        13px
+        61px;
+
+    background: #fffdfb;
+
+    box-shadow:
+        0 25px 55px rgba(80,45,60,.16),
+        0 4px 12px rgba(80,45,60,.08);
+
+    transform: rotate(-1deg);
 }
 
 .photo-frame img {
     display: block;
+
     width: 100%;
-    max-height: 63vh;
+
+    max-height: 57vh;
+
     object-fit: contain;
+
+    background: #f7edf1;
 }
 
-.tape {
+.photo-frame::after {
+    content: "";
+
     position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-2deg);
-    width: 90px;
-    height: 28px;
-    background: rgba(215, 183, 169, .55);
-}
 
-.photo-number {
-    position: absolute;
-    bottom: 14px;
-    left: 20px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    color: #a88b84;
-}
+    bottom: 22px;
+    left: 15%;
 
-.message-area {
-    width: min(38vw, 460px);
-}
+    width: 70%;
+    height: 1px;
 
-.message-number {
-    font-family: 'Cormorant Garamond', serif;
-    color: #ad8178;
-    font-size: 20px;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
+    background: #ead5dc;
 }
 
 .message {
+    width: min(92vw, 700px);
+
+    margin-top: 28px;
+
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(19px, 2.1vw, 27px);
-    line-height: 1.5;
-    color: #564542;
+
+    font-size: clamp(19px, 3vw, 25px);
+
+    line-height: 1.45;
+
+    color: #644a56;
+
     white-space: pre-line;
 }
 
-.message-heart {
-    margin-top: 25px;
-    color: #b4776e;
-    font-size: 22px;
-}
-
-/* =========================
+/* =====================================================
    FINAL PAGE
-========================= */
+===================================================== */
 
-#final {
-    background:
-        radial-gradient(circle at center, #fffaf7 0%, #f5e5df 100%);
+.final-container {
+    width: min(93vw, 800px);
+
     text-align: center;
-    padding: 30px;
+
+    padding: 40px 0;
 }
 
-.final-content {
-    max-width: 720px;
+.final-symbol {
+    font-family: 'Allura', cursive;
+
+    font-size: 74px;
+
+    color: #bd718b;
+
+    margin-bottom: 0;
+
+    text-shadow:
+        0 3px 0 white,
+        0 0 25px rgba(211,139,163,.35);
+
+    animation:
+        finalFloat 3s ease-in-out infinite;
 }
 
-.final-content p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 3vw, 34px);
-    line-height: 1.65;
-    color: #574642;
-    white-space: pre-line;
-}
+@keyframes finalFloat {
 
-.final-heart {
-    margin-top: 35px;
-    font-size: 35px;
-    color: #a96760;
-    animation: heartbeat 1.7s infinite;
-}
-
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    15% { transform: scale(1.18); }
-    30% { transform: scale(1); }
-}
-
-/* =========================
-   NAVIGATION
-========================= */
-
-.nav {
-    position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .5s ease;
-}
-
-.nav.visible {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.nav button {
-    border: none;
-    background: rgba(255, 250, 247, .75);
-    color: #8c6962;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    box-shadow: 0 5px 15px rgba(80, 50, 45, .1);
-    transition: transform .2s ease, background .2s ease;
-}
-
-.nav button:hover {
-    transform: scale(1.1);
-    background: #fff;
-}
-
-.slide-counter {
-    font-family: 'Cormorant Garamond', serif;
-    color: #98756e;
-    font-size: 18px;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 700px) {
-
-    .envelope-wrapper {
-        width: 240px;
-        height: 180px;
+    0%,
+    100% {
+        transform: translateY(0);
     }
 
-    .photo-layout {
-        flex-direction: column;
-        height: auto;
-        gap: 25px;
-        padding-top: 20px;
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.final-label {
+    font-family: 'Allura', cursive;
+
+    font-size: 34px;
+
+    letter-spacing: 2px;
+
+    color: #a66c80;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 2px 0 white,
+        0 0 15px rgba(215,157,177,.3);
+}
+
+.final-label::before {
+    content: "✦  ";
+}
+
+.final-label::after {
+    content: "  ✦";
+}
+
+.final-message {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(21px, 4vw, 30px);
+
+    line-height: 1.52;
+
+    color: #634955;
+
+    white-space: pre-line;
+}
+
+.latest-message {
+    margin-top: 40px;
+
+    padding-top: 35px;
+
+    position: relative;
+}
+
+.latest-message::before {
+    content: "♡  ✦  ♡";
+
+    display: block;
+
+    margin-bottom: 25px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 18px;
+
+    letter-spacing: 7px;
+
+    color: #c5899d;
+}
+
+.final-ending {
+    display: block;
+
+    margin-top: 34px;
+
+    font-family: 'Great Vibes', cursive;
+
+    color: #9d5e73;
+
+    font-size: clamp(34px, 6vw, 49px);
+
+    text-shadow:
+        0 2px 0 white,
+        0 0 18px rgba(215,145,166,.25);
+}
+
+/* =====================================================
+   MUSIC BUTTON
+===================================================== */
+
+.music-btn {
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    width: 47px;
+    height: 47px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.87);
+
+    color: #85586b;
+
+    cursor: pointer;
+
+    z-index: 999;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 19px;
+
+    box-shadow:
+        0 7px 22px rgba(70,40,55,.12);
+
+    transition: .3s;
+}
+
+.music-btn:hover {
+    transform: scale(1.08);
+}
+
+/* =====================================================
+   FALLING PETALS / HEARTS
+===================================================== */
+
+.falling {
+    position: fixed;
+
+    top: -30px;
+
+    pointer-events: none;
+
+    z-index: 999;
+
+    animation:
+        fall linear forwards;
+}
+
+@keyframes fall {
+
+    0% {
+        transform:
+            translateY(-30px)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .9;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(100px)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .screen {
+        padding: 15px 10px;
+    }
+
+    .intro-container {
+        padding-top: 10px;
+    }
+
+    .intro-small {
+        font-size: 28px;
+    }
+
+    .main-title {
+        font-size: clamp(58px, 17vw, 82px);
+    }
+
+    .main-title::before {
+        left: -22px;
+        font-size: 18px;
+    }
+
+    .main-title::after {
+        right: -22px;
+        font-size: 18px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .bouquet-scene {
+        height: 350px;
+
+        transform: scale(.78);
+
+        margin-top: -15px;
+        margin-bottom: -80px;
+    }
+
+    .envelope-area {
+        margin-top: -5px;
+    }
+
+    .envelope {
+        width: 240px;
+        height: 155px;
+    }
+
+    .envelope.open .letter {
+        top: -90px;
+    }
+
+    .letter {
+        width: 195px;
+        left: 22px;
+    }
+
+    .letter-text {
+        font-size: 28px;
+    }
+
+    .small-label {
+        font-size: 29px;
+    }
+
+    .page-title {
+        font-size: 54px;
+    }
+
+    .personalized-frame {
+        padding:
+            8px
+            8px
+            50px;
+    }
+
+    .personalized-frame img {
+        width: 88vw;
+        max-height: 58vh;
+    }
+
+    .personalized-caption {
+        font-size: 25px;
+    }
+
+    .photo-number {
+        font-size: 28px;
     }
 
     .photo-frame {
-        width: min(82vw, 400px);
-        max-height: 48vh;
-        padding-bottom: 42px;
+        padding:
+            8px
+            8px
+            50px;
     }
 
     .photo-frame img {
-        max-height: 42vh;
-    }
-
-    .message-area {
-        width: min(88vw, 500px);
-        text-align: center;
-        overflow-y: auto;
-        max-height: 34vh;
-        padding: 0 8px 20px;
+        max-height: 52vh;
     }
 
     .message {
-        font-size: 19px;
-        line-height: 1.45;
+        font-size: 20px;
+        line-height: 1.42;
     }
 
-    .message-number {
-        font-size: 17px;
-        margin-bottom: 8px;
+    .final-container {
+        padding: 25px 0;
     }
 
-    .gifts {
-        transform: scale(.78);
+    .final-label {
+        font-size: 30px;
     }
 
-    .gift-title {
-        top: 12%;
-        text-align: center;
-    }
-
-    .final-content p {
-        font-size: 22px;
+    .final-message {
+        font-size: 21px;
         line-height: 1.5;
+    }
+
+    .latest-message {
+        margin-top: 30px;
+        padding-top: 28px;
+    }
+
+    .final-ending {
+        font-size: 37px;
     }
 }
 </style>
@@ -710,112 +1708,244 @@ audio {
 
 <body>
 
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div id="background"></div>
+
 <!-- MUSIC -->
-<audio id="music" loop>
-    <source src="song.mp3" type="audio/mpeg">
+
+<audio
+    id="music"
+    src="song.mp3"
+    loop>
 </audio>
 
-<!-- =========================
-     SLIDE 1 — LETTER
-========================= -->
+<button
+    class="music-btn"
+    id="musicBtn"
+    onclick="toggleMusic()">
+    ♫
+</button>
 
-<section class="slide active" id="slide1">
 
-    <div class="intro-text">
-        a little something for you ♡
-    </div>
+<!-- =====================================================
+     PAGE 0 — OPENING
+===================================================== -->
 
-    <div class="envelope-wrapper" id="envelope">
+<section
+    class="screen active"
+    id="intro">
 
-        <div class="letter-paper"></div>
+    <div class="intro-container">
 
-        <div class="envelope"></div>
-
-        <div class="flap"></div>
-
-        <div class="seal">
-            K ♡ R
+        <div class="intro-small">
+            for my palanglang
         </div>
 
-        <div class="click-hint">
-            open me ♡
+        <h1 class="main-title">
+            <span>9 lovely</span><br>
+            months with u ♡
+        </h1>
+
+        <div class="subtitle">
+            a little love story of us
         </div>
 
-    </div>
 
-    <div class="love-kyla" id="loveKyla">
-        <span class="love-small">with all my love,</span>
-        <span class="love-name">love, kyla</span>
-    </div>
+        <!-- =========================
+             BOUQUET
+        ========================== -->
 
-</section>
+        <div class="bouquet-scene">
 
-
-<!-- =========================
-     SLIDE 2 — CHOCOLATE
-========================= -->
-
-<section class="slide gift-slide" id="slide2">
-
-    <div class="gift-title">
-        a little something for you ♡
-    </div>
-
-    <div class="gifts">
-
-        <div class="chocolate" id="chocolate"></div>
-
-        <div class="flower-bouquet">
             <div class="bouquet">
-                <div class="flower">🌷</div>
-                <div class="flower">🌸</div>
-                <div class="flower">🌷</div>
-                <div class="flower">🌹</div>
-                <div class="flower">🌸</div>
 
-                <div class="stems"></div>
-                <div class="wrapping"></div>
-            </div>
-        </div>
+                <!-- STEMS -->
 
-    </div>
-
-</section>
+                <div class="stem s1"></div>
+                <div class="stem s2"></div>
+                <div class="stem s3"></div>
+                <div class="stem s4"></div>
+                <div class="stem s5"></div>
+                <div class="stem s6"></div>
 
 
-<!-- =========================
-     SLIDE 3 — ALFONSO
-========================= -->
+                <!-- LEAVES -->
 
-<section class="slide gift-slide" id="slide3">
+                <div class="leaf l1"></div>
+                <div class="leaf l2"></div>
+                <div class="leaf l3"></div>
+                <div class="leaf l4"></div>
+                <div class="leaf l5"></div>
 
-    <div class="gift-title">
-        okay... maybe this is more you HAHAHA ♡
-    </div>
 
-    <div class="gifts">
+                <!-- PINK ROSE -->
 
-        <div class="flower-bouquet">
-            <div class="bouquet">
-                <div class="flower">🌷</div>
-                <div class="flower">🌸</div>
-                <div class="flower">🌷</div>
-                <div class="flower">🌹</div>
-                <div class="flower">🌸</div>
+                <div class="rose pink r1">
 
-                <div class="stems"></div>
-                <div class="wrapping"></div>
-            </div>
-        </div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
 
-        <div class="alfonso show">
-            <div class="bottle">
-                <div class="bottle-label">
-                    ALFONSO<br>
-                    LIGHT
+                    <div class="rose-center"></div>
+
                 </div>
-                <div class="bottle-neck"></div>
+
+
+                <!-- BLUSH ROSE -->
+
+                <div class="rose blush r2">
+
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+
+                    <div class="rose-center"></div>
+
+                </div>
+
+
+                <!-- CREAM ROSE -->
+
+                <div class="rose cream r3">
+
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+
+                    <div class="rose-center"></div>
+
+                </div>
+
+
+                <!-- PEACH ROSE -->
+
+                <div class="rose peach r4">
+
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+
+                    <div class="rose-center"></div>
+
+                </div>
+
+
+                <!-- LILAC ROSE -->
+
+                <div class="rose lilac r5">
+
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+
+                    <div class="rose-center"></div>
+
+                </div>
+
+
+                <!-- FILLER FLOWERS -->
+
+                <div class="filler f1"></div>
+                <div class="filler f2"></div>
+                <div class="filler f3"></div>
+                <div class="filler f4"></div>
+                <div class="filler f5"></div>
+
+
+                <!-- WRAPPING -->
+
+                <div class="wrapper">
+
+                    <div class="ribbon">
+                        <div class="ribbon-knot"></div>
+                    </div>
+
+                </div>
+
             </div>
+
+        </div>
+
+
+        <!-- =========================
+             ENVELOPE
+        ========================== -->
+
+        <div class="envelope-area">
+
+            <div
+                class="envelope"
+                id="envelope"
+                onclick="openLetter()">
+
+                <div class="envelope-back"></div>
+
+                <div class="letter">
+
+                    <div class="letter-text">
+                        for you,<br>
+                        my palanglang ♡
+                    </div>
+
+                </div>
+
+                <div class="envelope-flap"></div>
+
+                <div class="envelope-front"></div>
+
+            </div>
+
+            <div
+                class="click-text"
+                id="clickText">
+
+                open this ♡
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="bloomMessage"
+            style="display:none;">
+
+            <button
+                class="next-btn"
+                onclick="goTo(1)">
+
+                continue ♡
+
+            </button>
+
         </div>
 
     </div>
@@ -823,517 +1953,782 @@ audio {
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
+     PAGE 1 — PERSONALIZED IMAGE
+===================================================== -->
+
+<section
+    class="screen"
+    id="page1">
+
+    <div class="personalized-page">
+
+        <div class="small-label">
+            a little piece of us
+        </div>
+
+        <h2 class="page-title">
+            just for you ♡
+        </h2>
+
+        <div class="personalized-frame">
+
+            <img
+                src="personalized.jpg"
+                alt="our personalized image">
+
+            <div class="personalized-caption">
+                nine months of us ♡
+            </div>
+
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(2)">
+
+            our memories →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
      PHOTO 01
-========================= -->
+===================================================== -->
 
-<section class="slide photo-slide">
+<section
+    class="screen"
+    id="page2">
 
-    <div class="photo-layout">
+    <div class="photo-page">
+
+        <div class="photo-number">
+            01 / 09
+        </div>
 
         <div class="photo-frame">
-            <div class="tape"></div>
-            <img src="01.jpg" alt="Our first photo">
-            <div class="photo-number">01 / 09</div>
-        </div>
 
-        <div class="message-area">
-
-            <div class="message-number">OUR FIRST DATE ♡</div>
-
-            <div class="message">first photo together, first date din. strangers pa tayo dito, still getting to know the basics, yet u still found a way to hold my hand. i liked it tho. and my first thought during our first date is how much of a cutie u are.</div>
-
-            <div class="message-heart">♡</div>
+            <img
+                src="01.jpg"
+                alt="first photo together">
 
         </div>
+
+        <div class="message">
+first photo together, first date din. strangers pa tayo dito, still getting to know the basics, yet u still found a way to hold my hand. i liked it tho. and my first thought during our first date is how much of a cutie u are.
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(3)">
+
+            next memory ♡
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      PHOTO 02
-========================= -->
+===================================================== -->
 
-<section class="slide photo-slide">
+<section
+    class="screen"
+    id="page3">
 
-    <div class="photo-layout">
+    <div class="photo-page">
+
+        <div class="photo-number">
+            02 / 09
+        </div>
 
         <div class="photo-frame">
-            <div class="tape"></div>
-            <img src="02.jpg" alt="Our second photo">
-            <div class="photo-number">02 / 09</div>
-        </div>
 
-        <div class="message-area">
-
-            <div class="message-number">OUR SECOND DATE ♡</div>
-
-            <div class="message">second photo, second date. i found myself smelling your shoulders maya't maya na dito. first time din pinakilala kita kay mama. ang cute cute mo dito, ang pogi pogi pa, mahal na kita agad dito pero natatakot parin ako ng konti.</div>
-
-            <div class="message-heart">♡</div>
+            <img
+                src="02.jpg"
+                alt="second photo">
 
         </div>
+
+        <div class="message">
+second photo, second date. i found myself smelling your shoulders maya't maya na dito. first time din pinakilala kita kay mama. ang cute cute mo dito, ang pogi pogi pa, mahal na kita agad dito pero natatakot parin ako ng konti.
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(4)">
+
+            next memory ♡
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      PHOTO 03
-========================= -->
+===================================================== -->
 
-<section class="slide photo-slide">
+<section
+    class="screen"
+    id="page4">
 
-    <div class="photo-layout">
+    <div class="photo-page">
+
+        <div class="photo-number">
+            03 / 09
+        </div>
 
         <div class="photo-frame">
-            <div class="tape"></div>
-            <img src="03.jpg" alt="Our third photo">
-            <div class="photo-number">03 / 09</div>
-        </div>
 
-        <div class="message-area">
-
-            <div class="message-number">OUR LITTLE SECRET ♡</div>
-
-            <div class="message">third photo, naka ilang dates na tayo before this picture. u always loved making sundo of me and watch how 3pp workers gag when they see u hahaha. this was the first time u brought me to ur house. i was so scared pero wala pa pala sina tita at tito kaya okay lang. first bembang din WHAHAHHAHAHAHH.</div>
-
-            <div class="message-heart">♡</div>
+            <img
+                src="03.jpg"
+                alt="third photo">
 
         </div>
+
+        <div class="message">
+third photo, naka ilang dates na tayo before this picture. u always loved making sundo of me and watch how 3pp workers gag when they see u hahaha. this was the first time u brought me to ur house. i was so scared pero wala pa pala sina tita at tito kaya okay lang. first bembang din WHAHAHHAHAHAHH.
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(5)">
+
+            next memory ♡
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      PHOTO 04
-========================= -->
+===================================================== -->
 
-<section class="slide photo-slide">
+<section
+    class="screen"
+    id="page5">
 
-    <div class="photo-layout">
+    <div class="photo-page">
+
+        <div class="photo-number">
+            04 / 09
+        </div>
 
         <div class="photo-frame">
-            <div class="tape"></div>
-            <img src="04.jpg" alt="Our fourth photo">
-            <div class="photo-number">04 / 09</div>
-        </div>
 
-        <div class="message-area">
-
-            <div class="message-number">OUR FIRST CHRISTMAS ♡</div>
-
-            <div class="message">fourth photo, our first christmas together. after this sinagot na kita kahit di ka naman nag tanong hahahhaha sorry na dali kapa palanglang hahahha. masayang- masaya ako ng time na to. kahit di tayo nakasama sa ilocos trip ng family mo, masaya parin tayo kase magkasama tayo.</div>
-
-            <div class="message-heart">♡</div>
+            <img
+                src="04.jpg"
+                alt="fourth photo">
 
         </div>
+
+        <div class="message">
+fourth photo, our first christmas together. after this sinagot na kita kahit di ka naman nag tanong hahahhaha sorry na dali kapa palanglang hahahha. masayang- masaya ako ng time na to. kahit di tayo nakasama sa ilocos trip ng family mo, masaya parin tayo kase magkasama tayo.
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(6)">
+
+            next memory ♡
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      PHOTO 05
-========================= -->
+===================================================== -->
 
-<section class="slide photo-slide">
+<section
+    class="screen"
+    id="page6">
 
-    <div class="photo-layout">
+    <div class="photo-page">
+
+        <div class="photo-number">
+            05 / 09
+        </div>
 
         <div class="photo-frame">
-            <div class="tape"></div>
-            <img src="05.jpg" alt="Our fifth photo">
-            <div class="photo-number">05 / 09</div>
-        </div>
 
-        <div class="message-area">
-
-            <div class="message-number">OUR FIRST BASKETBALL DATE ♡</div>
-
-            <div class="message">fifth photo, our first "manood ng basketball in person". first time ko din ma experience to and ang best part is ikaw ang kasama ko.</div>
-
-            <div class="message-heart">♡</div>
+            <img
+                src="05.jpg"
+                alt="fifth photo">
 
         </div>
+
+        <div class="message">
+fifth photo, our first  "manood ng basketball in person". first time ko din ma experience to and ang best part is ikaw ang kasama ko.
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(7)">
+
+            next memory ♡
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      PHOTO 06
-========================= -->
+===================================================== -->
 
-<section class="slide photo-slide">
+<section
+    class="screen"
+    id="page7">
 
-    <div class="photo-layout">
+    <div class="photo-page">
+
+        <div class="photo-number">
+            06 / 09
+        </div>
 
         <div class="photo-frame">
-            <div class="tape"></div>
-            <img src="06.jpg" alt="Our sixth photo">
-            <div class="photo-number">06 / 09</div>
-        </div>
 
-        <div class="message-area">
-
-            <div class="message-number">ONE OF MY FAVORITES ♡</div>
-
-            <div class="message">sixth photo, one of my favorites. after to kunin nag-away pa tayo, eh kase wala tayo maayos picture together. gusto ko palagi may pic tayo bebe -\_-. during this night after away, narealize ko na kahit minsan sobrang maldita ako sayo at sobra akong tinotoyo, pinipilit mo parin akong intindihin. salamat baby kase kahit ako minsan di maintindihan sarili ko and it takes a man who genuinely loves to understand somebody like me.</div>
-
-            <div class="message-heart">♡</div>
+            <img
+                src="06.jpg"
+                alt="sixth photo">
 
         </div>
+
+        <div class="message">
+sixth photo, one of my favorites. after to kunin nag-away pa tayo, eh kase wala tayo maayos picture together. gusto ko palagi may pic tayo bebe -_-. during this night after away, narealize ko na kahit minsan sobrang maldita ako sayo at sobra akong tinotoyo, pinipilit mo parin akong intindihin. salamat baby kase kahit ako minsan di maintindihan sarili ko and it takes a man who genuinely loves to understand somebody like me.
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(8)">
+
+            next memory ♡
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      PHOTO 07
-========================= -->
+===================================================== -->
 
-<section class="slide photo-slide">
+<section
+    class="screen"
+    id="page8">
 
-    <div class="photo-layout">
+    <div class="photo-page">
+
+        <div class="photo-number">
+            07 / 09
+        </div>
 
         <div class="photo-frame">
-            <div class="tape"></div>
-            <img src="07.jpg" alt="Our seventh photo">
-            <div class="photo-number">07 / 09</div>
-        </div>
 
-        <div class="message-area">
-
-            <div class="message-number">MY TOUR GUIDE ♡</div>
-
-            <div class="message">seventh photo, i loveee. first punta natin together sa national museum, pagod pero worth it. first time ko din makasakay ng train hahahhahh shet thank u baby so much. like ng sinabi mo nung dati, "i can be ur tourguide", and yes u brought me to the places i have never been.</div>
-
-            <div class="message-heart">♡</div>
+            <img
+                src="07.jpg"
+                alt="seventh photo">
 
         </div>
+
+        <div class="message">
+seventh photo, i loveee. first punta natin together sa national museum, pagod pero worth it. first time ko din makasakay ng train hahahhahh shet thank u baby so much. like ng sinabi mo nung dati, "i can be ur tourguide", and yes u brought me to the places i have never been.
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(9)">
+
+            next memory ♡
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      PHOTO 08
-========================= -->
+===================================================== -->
 
-<section class="slide photo-slide">
+<section
+    class="screen"
+    id="page9">
 
-    <div class="photo-layout">
+    <div class="photo-page">
+
+        <div class="photo-number">
+            08 / 09
+        </div>
 
         <div class="photo-frame">
-            <div class="tape"></div>
-            <img src="08.jpg" alt="Our eighth photo">
-            <div class="photo-number">08 / 09</div>
-        </div>
 
-        <div class="message-area">
-
-            <div class="message-number">OUR FIRST HIKE ♡</div>
-
-            <div class="message">eigth photo, first hiking experience together. kapoyyyyyy so much pero enjoy din hahahha. i can't wait to climb bigger and taller mountains with u my palanglang. wala akong gustong ibang kasama kundi ikaw lang.</div>
-
-            <div class="message-heart">♡</div>
+            <img
+                src="08.jpg"
+                alt="eighth photo">
 
         </div>
+
+        <div class="message">
+eigth photo, first hiking experience together. kapoyyyyyy so much pero enjoy din hahahha. i can't wait to climb bigger and taller mountains with u my palanglang. wala akong gustong ibang kasama kundi ikaw lang.
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(10)">
+
+            next memory ♡
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      PHOTO 09
-========================= -->
+===================================================== -->
 
-<section class="slide photo-slide">
+<section
+    class="screen"
+    id="page10">
 
-    <div class="photo-layout">
+    <div class="photo-page">
+
+        <div class="photo-number">
+            09 / 09
+        </div>
 
         <div class="photo-frame">
-            <div class="tape"></div>
-            <img src="09.jpg" alt="Our ninth photo">
-            <div class="photo-number">09 / 09</div>
-        </div>
 
-        <div class="message-area">
-
-            <div class="message-number">MY FAVORITE ♡</div>
-
-            <div class="message">finally, ninth photo, pinakarecent and pinakafave ko. thanks for buying us promise rings. thank u for the flower, and thank u for making me feel so loved.</div>
-
-            <div class="message-heart">♡</div>
+            <img
+                src="09.jpg"
+                alt="ninth photo">
 
         </div>
+
+        <div class="message">
+finally, ninth photo, pinakarecent and pinakafave ko. thanks for buying us promise rings. thank u for the flower, and thank u for making me feel so loved.
+        </div>
+
+        <button
+            class="next-btn"
+            onclick="goTo(11)">
+
+            one last thing ♡
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     FINAL MESSAGE
-========================= -->
 
-<section class="slide" id="final">
+<!-- =====================================================
+     PAGE 11 — FINAL
+===================================================== -->
 
-    <div class="final-content">
+<section
+    class="screen"
+    id="page11">
 
-        <p>within those nine months, ikaw lang palanglang.
+    <div class="final-container">
+
+        <div class="final-symbol">
+            ♡
+        </div>
+
+        <div class="final-label">
+            for my palanglang
+        </div>
+
+
+        <!-- ORIGINAL FINAL MESSAGE -->
+
+        <div class="final-message">
+
+within those nine months, ikaw lang palanglang.
 ikaw lang sa umaga, sa tanghali, at sa gabi.
 ikaw lang ang palaging pinipili ko, tayo.
 mahal kita, at patuloy na mamahalin pa.
 pinagdarasal ko sa Panginoon na He will bless what's ours.
 i really believe in our relationship, in us.
 
-mahala kita, palagi!</p>
+        </div>
 
-        <div class="final-heart">♡</div>
+
+        <!-- LATEST MESSAGE — LAST PAGE ONLY -->
+
+        <div class="final-message latest-message">
+
+palanglang ko. u are more than anything that other people think of u. u are better than anyone i have ever met. i want to dream with u, fulfill my dreams wt u. i know how much of a gentle and kind person u are. u are more than all the voices in ur head. i love u truly.
+
+        </div>
+
+
+        <span class="final-ending">
+            mahala kita, palagi! ♡
+        </span>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<div class="nav" id="nav">
-
-    <button id="prev">‹</button>
-
-    <span class="slide-counter" id="counter">1 / 12</span>
-
-    <button id="next">›</button>
-
-</div>
-
 
 <script>
 
-/* =========================
-   VARIABLES
-========================= */
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
 
-const slides = document.querySelectorAll('.slide');
-const envelope = document.getElementById('envelope');
-const loveKyla = document.getElementById('loveKyla');
-const music = document.getElementById('music');
+const pages =
+    document.querySelectorAll(".screen");
 
-const nav = document.getElementById('nav');
-const nextButton = document.getElementById('next');
-const prevButton = document.getElementById('prev');
-const counter = document.getElementById('counter');
+function goTo(number) {
 
-let currentSlide = 0;
-let opened = false;
-
-
-/* =========================
-   CREATE FLOATING HEARTS
-========================= */
-
-function createHeart() {
-
-    const heart = document.createElement('div');
-
-    heart.className = 'heart';
-    heart.innerHTML = Math.random() > .5 ? '♡' : '♥';
-
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.bottom = '-30px';
-    heart.style.fontSize = (12 + Math.random() * 18) + 'px';
-    heart.style.animationDuration = (5 + Math.random() * 5) + 's';
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 10000);
-}
-
-setInterval(createHeart, 1300);
-
-
-/* =========================
-   SHOW SLIDE
-========================= */
-
-function showSlide(index) {
-
-    if (index < 0) index = 0;
-    if (index >= slides.length) index = slides.length - 1;
-
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
+    pages.forEach(page => {
+        page.classList.remove("active");
     });
 
-    currentSlide = index;
+    const target =
+        number === 0
+        ? document.getElementById("intro")
+        : document.getElementById("page" + number);
 
-    counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+    if (target) {
 
-    /* Hide navigation on the opening slide */
-    if (currentSlide === 0) {
-        nav.classList.remove('visible');
-    } else {
-        nav.classList.add('visible');
+        target.classList.add("active");
+
+        target.scrollTop = 0;
     }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    createPetals(18);
 }
 
 
-/* =========================
+/* =====================================================
    OPEN LETTER
-========================= */
+===================================================== */
 
-envelope.addEventListener('click', () => {
+let opened = false;
+
+function openLetter() {
 
     if (opened) return;
 
     opened = true;
 
-    envelope.classList.add('open');
+    const envelope =
+        document.getElementById("envelope");
 
-    /*
-        MUSIC STARTS IMMEDIATELY
-        AFTER THE USER CLICKS THE LETTER.
-    */
+    const clickText =
+        document.getElementById("clickText");
 
-    music.volume = 0.65;
+    const bloomMessage =
+        document.getElementById("bloomMessage");
 
-    music.play().catch(() => {
-        console.log("Music could not autoplay.");
-    });
+    envelope.classList.add("open");
 
-    setTimeout(() => {
+    clickText.style.opacity = "0";
 
-        loveKyla.classList.add('show');
-
-    }, 700);
+    startMusic();
 
     setTimeout(() => {
 
-        showSlide(1);
+        createPetals(50);
 
-    }, 3200);
+        bloomMessage.style.display = "block";
 
-});
+        bloomMessage.style.animation =
+            "pageIn .9s ease";
 
-
-/* =========================
-   NEXT
-========================= */
-
-nextButton.addEventListener('click', () => {
-
-    if (currentSlide < slides.length - 1) {
-        showSlide(currentSlide + 1);
-    }
-
-});
+    }, 900);
+}
 
 
-/* =========================
-   PREVIOUS
-========================= */
+/* =====================================================
+   MUSIC
+===================================================== */
 
-prevButton.addEventListener('click', () => {
+const music =
+    document.getElementById("music");
 
-    if (currentSlide > 1) {
-        showSlide(currentSlide - 1);
-    }
+const musicBtn =
+    document.getElementById("musicBtn");
 
-});
+let musicPlaying = false;
 
+function startMusic() {
 
-/* =========================
-   KEYBOARD
-========================= */
+    music.volume = 0.55;
 
-document.addEventListener('keydown', (event) => {
+    music.play()
+        .then(() => {
 
-    if (!opened) return;
+            musicPlaying = true;
 
-    if (event.key === 'ArrowRight' || event.key === ' ') {
+            musicBtn.textContent = "♫";
 
-        event.preventDefault();
+        })
+        .catch(() => {
 
-        if (currentSlide < slides.length - 1) {
-            showSlide(currentSlide + 1);
-        }
+            musicPlaying = false;
 
-    }
+        });
+}
 
-    if (event.key === 'ArrowLeft') {
+function toggleMusic() {
 
-        if (currentSlide > 1) {
-            showSlide(currentSlide - 1);
-        }
+    if (musicPlaying) {
 
-    }
+        music.pause();
 
-});
+        musicPlaying = false;
 
-
-/* =========================
-   TOUCH SWIPE
-========================= */
-
-let touchStartX = 0;
-let touchEndX = 0;
-
-document.addEventListener('touchstart', (event) => {
-
-    touchStartX = event.changedTouches[0].screenX;
-
-});
-
-document.addEventListener('touchend', (event) => {
-
-    touchEndX = event.changedTouches[0].screenX;
-
-    const difference = touchStartX - touchEndX;
-
-    if (Math.abs(difference) < 50) return;
-
-    if (difference > 0) {
-
-        if (currentSlide < slides.length - 1) {
-            showSlide(currentSlide + 1);
-        }
+        musicBtn.textContent = "🔇";
 
     } else {
 
-        if (currentSlide > 1) {
-            showSlide(currentSlide - 1);
+        music.play()
+            .then(() => {
+
+                musicPlaying = true;
+
+                musicBtn.textContent = "♫";
+
+            })
+            .catch(() => {});
+    }
+}
+
+
+/* =====================================================
+   BACKGROUND HEARTS
+===================================================== */
+
+const background =
+    document.getElementById("background");
+
+function createBackgroundHearts() {
+
+    for (let i = 22; i > 0; i--) {
+
+        const heart =
+            document.createElement("div");
+
+        heart.className =
+            "bg-heart";
+
+        heart.innerHTML =
+            Math.random() > .5
+            ? "♡"
+            : "✿";
+
+        heart.style.left =
+            Math.random() * 100 + "%";
+
+        heart.style.fontSize =
+            (12 + Math.random() * 18) + "px";
+
+        heart.style.animationDuration =
+            (10 + Math.random() * 15) + "s";
+
+        heart.style.animationDelay =
+            (-Math.random() * 15) + "s";
+
+        background.appendChild(heart);
+    }
+}
+
+createBackgroundHearts();
+
+
+/* =====================================================
+   FALLING PETALS
+===================================================== */
+
+function createPetals(amount = 12) {
+
+    const symbols = [
+        "♡",
+        "❀",
+        "✿",
+        "♥"
+    ];
+
+    for (let i = 0; i < amount; i++) {
+
+        const petal =
+            document.createElement("div");
+
+        petal.className =
+            "falling";
+
+        petal.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+        petal.style.left =
+            Math.random() * 100 + "vw";
+
+        petal.style.fontSize =
+            (12 + Math.random() * 15) + "px";
+
+        petal.style.animationDuration =
+            (4 + Math.random() * 5) + "s";
+
+        petal.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        document.body.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, 9000);
+    }
+}
+
+
+/* =====================================================
+   KEYBOARD NAVIGATION
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(e) {
+
+        const current =
+            [...pages].findIndex(
+                page =>
+                    page.classList.contains("active")
+            );
+
+        if (e.key === "ArrowRight") {
+
+            if (
+                current <
+                pages.length - 1
+            ) {
+                goTo(current + 1);
+            }
+        }
+
+        if (e.key === "ArrowLeft") {
+
+            if (current > 0) {
+                goTo(current - 1);
+            }
         }
 
     }
+);
 
-});
 
+/* =====================================================
+   MOBILE SWIPE
+===================================================== */
 
-/* =========================
-   INITIAL STATE
-========================= */
+let touchStartX = 0;
 
-showSlide(0);
+document.addEventListener(
+    "touchstart",
+    function(e) {
+
+        touchStartX =
+            e.changedTouches[0].screenX;
+
+    }
+);
+
+document.addEventListener(
+    "touchend",
+    function(e) {
+
+        const touchEndX =
+            e.changedTouches[0].screenX;
+
+        const difference =
+            touchStartX - touchEndX;
+
+        const current =
+            [...pages].findIndex(
+                page =>
+                    page.classList.contains("active")
+            );
+
+        if (
+            Math.abs(difference) > 70
+        ) {
+
+            if (
+                difference > 0 &&
+                current <
+                pages.length - 1
+            ) {
+
+                goTo(current + 1);
+
+            }
+
+            if (
+                difference < 0 &&
+                current > 0
+            ) {
+
+                goTo(current - 1);
+
+            }
+
+        }
+
+    }
+);
 
 </script>
 
 </body>
 </html>
-```
